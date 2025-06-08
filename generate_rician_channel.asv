@@ -1,0 +1,17 @@
+function h = generate_rician_channel(d, K_dB)
+
+    rho_0 = 1e-7;                  % -40 dBm
+    K = 10^(K_dB / 10);            % dB to watts
+    lambda = 1;                    % 預設波長 λ = 1（可視需求修改）
+    phase = -2 * pi * d / lambda;
+
+    % LoS 與 NLoS 分量
+    h_bar = exp(1j * phase);       % LoS 成分（相位）
+    h_tilde = (randn() + 1j * randn()) / sqrt(2);  % CN(0,1)
+
+    % channel gain scale
+    scale = sqrt(rho_0 / d^2);
+    
+    % 合成 Rician channel
+    h = scale * (sqrt(K / (1 + K)) * h_bar + sqrt(1 / (1 + K)) * h_tilde);
+end
