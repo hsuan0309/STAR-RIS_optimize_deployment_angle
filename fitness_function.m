@@ -5,5 +5,5 @@ function fitness = fitness_function(chromosome, context)
         R_k=rate(chromosome,k,context);
         fitness=fitness+R_k;
     end
-    fitness=fitness*10000;
+    fitness=fitness;
 end
