@@ -93,7 +93,4 @@ function [psi_r,psi_t]=solve_TARC(delta,p,context,use_penalty,lambda)
 
     psi_t=sqrt(beta_t).*exp(1j*phi_t);
     psi_r=sqrt(1-beta_t).*exp(1j*phi_r);
-
-
-
 end

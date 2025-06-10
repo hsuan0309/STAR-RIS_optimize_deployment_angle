@@ -7,10 +7,10 @@ function context = setup_context(N,K,P)
     UE_positions=[r.*cos(angles),r.*sin(angles)+10];
 
     % Channels
-    h=generate_rician_channel(10);  % BS to RIS
+    h=generate_rician_channel(10,N);  % BS to RIS
     v_all=zeros(K, N);
     for k=1:K
-        v_all(k,:)=generate_rician_channel(3).'; % RIS to UE_k
+        v_all(k,:)=generate_rician_channel(3,N).'; % RIS to UE_k
     end
 
     % Initial random TARCs

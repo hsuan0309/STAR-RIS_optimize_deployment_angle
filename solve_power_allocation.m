@@ -9,10 +9,9 @@ function p_opt = solve_power_allocation(delta, context)
         gain(k) = (F_t * F_k * abs(h_eff))^2;
     end
 
-    % 先給定一組初始 power（均分）
     p_init = ones(K,1) * (P/K);
 
-    % 根據初始 power 計算固定 interference
+    % calculate fixed interference
     fixed_interf = zeros(K,1);
     for k = 1:K
         interf = 0;
@@ -29,7 +28,7 @@ function p_opt = solve_power_allocation(delta, context)
         expression SINR(K)
 
         for k = 1:K
-            SINR(k) = gain(k) * p(k) / fixed_interf(k);  % denominator is constant
+            SINR(k) = gain(k) * p(k) / fixed_interf(k);  
         end
 
         maximize( sum(log(1 + SINR)) / log(2) )
